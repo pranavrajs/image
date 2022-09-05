@@ -6,7 +6,7 @@ import { useRuntimeConfig } from "#imports";
 export default lazyEventHandler(() => {
   const ipxOptions = {
     ...useRuntimeConfig().ipx || {},
-    dir: fileURLToPath(new URL("../public", import.meta.url))
+    dir: fileURLToPath(new URL("./public", import.meta.url))
   };
   const ipx = createIPX(ipxOptions);
   const middleware = createIPXMiddleware(ipx);
