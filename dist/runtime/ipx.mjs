@@ -1,10 +1,12 @@
+import { fileURLToPath } from "node:url";
 import { createIPX, createIPXMiddleware } from "ipx";
 import { withLeadingSlash } from "ufo";
 import { eventHandler, lazyEventHandler } from "h3";
 import { useRuntimeConfig } from "#imports";
 export default lazyEventHandler(() => {
   const ipxOptions = {
-    ...useRuntimeConfig().ipx || {}
+    ...useRuntimeConfig().ipx || {},
+    dir: fileURLToPath(new URL("", import.meta.url))
   };
   const ipx = createIPX(ipxOptions);
   const middleware = createIPXMiddleware(ipx);
